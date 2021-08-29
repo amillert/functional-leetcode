@@ -2,16 +2,6 @@ ThisBuild / version := "0.0.1"
 ThisBuild / organization := "amillert"
 ThisBuild / scalaVersion := "2.13.5"
 
-// def cyan(str: String): String =
-//   scala.Console.CYAN + str + scala.Console.RESET
-
-// def customPrompt(projectName: String): String =
-//   s"""|
-//       |[info] Welcome to the ${cyan(projectName)} project!
-//       |sbt:${cyan(projectName)}> """.stripMargin
-
-// shellPrompt := (_ => customPrompt(name.value))
-
 // lazy val libs = Seq(
 //   "dev.zio"       %% "zio"          % "1.0.9",
 //   "dev.zio"       %% "zio-test"     % "1.0.9" % "test",
@@ -20,8 +10,12 @@ ThisBuild / scalaVersion := "2.13.5"
 // )
 
 // testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
+lazy val day1 =
+  project
+    .in(file("./src/main/scala/pl/amillert/leetcode/day1"))
 
 lazy val leetcode =
   project
     .in(file("."))
-    // .settings(libraryDependencies ++= libs)
+    .dependsOn(day1)
+// .settings(libraryDependencies ++= libs)
