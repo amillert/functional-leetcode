@@ -1,6 +1,6 @@
 ## Functional Scala solutions to the *Leetcode* problems
 
-The original *Leetcode* datastructures have been turned into custom case class-based ADTs to support easier pattern matching in recursive calls.
+The original *Leetcode* datastructures have been turned into custom case class-based ADTs to support easier pattern matching in the recursive calls. The ADTs can be found in the *common* module.
 
 > EASY:
 - [35. Search Insert Position (Day 1)](https://leetcode.com/problems/search-insert-position/),

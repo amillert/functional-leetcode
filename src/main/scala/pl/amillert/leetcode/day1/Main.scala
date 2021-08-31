@@ -2,6 +2,10 @@ package pl.amillert
 package leetcode
 package day1
 
+import common.adt._
+import common.adt.LinkedList._
+import common.adt.Tree._
+
 object Main extends App {
   def binary_search(
       nums: Array[Int],
@@ -48,7 +52,7 @@ object Main extends App {
       ._1
   }
 
-  // 88. Merge Sorted Array (but return w/ no mutations)
+  // 88. Merge Sorted Array (but return wo/ mutations)
   def merge1(
       nums1: Array[Int],
       m: Int,
@@ -105,15 +109,7 @@ object Main extends App {
     s.split(' ').last.size
 
   // 83. Remove Duplicates from Sorted List
-  sealed trait MyList
-  object MyList {
-    case class ListNode(x: Int = 0, next: MyList) extends MyList
-    case object EmptyList                         extends MyList
-  }
-
-  import MyList._
-
-  def deleteDuplicates(list: MyList): MyList = list match {
+  def deleteDuplicates[A](list: LinkedList[A]): LinkedList[A] = list match {
     case EmptyList              => EmptyList
     case ListNode(h, EmptyList) => ListNode(h, EmptyList)
     case ListNode(h, tail @ ListNode(hh, t)) if h == hh =>
@@ -122,28 +118,16 @@ object Main extends App {
       ListNode(h, deleteDuplicates(tail))
   }
 
-  sealed trait Tree
-  object Tree {
-    case class TreeNode(
-        value: Int,
-        left: Tree = EmptyNode,
-        right: Tree = EmptyNode
-      )                   extends Tree
-    case object EmptyNode extends Tree
-  }
-
-  import Tree._
-
-  def inorder(t: Tree): Seq[Option[Int]] = t match {
-    case EmptyNode                         => Seq(None)
-    case TreeNode(x, EmptyNode, EmptyNode) => Seq(Some(x))
+  def inorder[A](t: Tree[A]): Seq[Option[A]] = t match {
+    case EmptyTree                         => Seq(None)
+    case TreeNode(x, EmptyTree, EmptyTree) => Seq(Some(x))
     case TreeNode(x, l, r)                 => inorder(l) :+ Some(x) :++ inorder(r)
   }
 
   // 100. Same Tree
-  def isSameTree(p: Tree, q: Tree): Boolean =
+  def isSameTree[A](p: Tree[A], q: Tree[A]): Boolean =
     inorder(p) == inorder(q)
-  // def isSameTree(p: Tree, q: Tree): Boolean = {
+  // def isSameTree[A](p: Tree[A], q: Tree[A]): Boolean = {
   //   val pp = inorder(p)
   //   val qq = inorder(q)
   //   println(pp)
@@ -153,9 +137,9 @@ object Main extends App {
   // }
 
   // 94. Binary Tree Inorder Traversal
-  def inorderTraversal(t: Tree): Seq[Int] = t match {
-    case EmptyNode                         => Seq.empty[Int]
-    case TreeNode(x, EmptyNode, EmptyNode) => Seq(x)
+  def inorderTraversal[A](t: Tree[A]): Seq[A] = t match {
+    case EmptyTree                         => Seq.empty[A]
+    case TreeNode(x, EmptyTree, EmptyTree) => Seq(x)
     case TreeNode(x, l, r)                 => inorderTraversal(l) :+ x :++ inorderTraversal(r)
   }
 
@@ -200,7 +184,7 @@ object Main extends App {
     isSameTree(TreeNode(1, TreeNode(2), TreeNode(3)), TreeNode(1, TreeNode(2), TreeNode(3))) == true
   )
   assert(
-    isSameTree(TreeNode(1, TreeNode(2), EmptyNode), TreeNode(1, EmptyNode, TreeNode(2))) == false
+    isSameTree(TreeNode(1, TreeNode(2), EmptyTree), TreeNode(1, EmptyTree, TreeNode(2))) == false
   )
   assert(
     isSameTree(
@@ -209,8 +193,8 @@ object Main extends App {
     ) == false
   )
   assert(
-    inorderTraversal(TreeNode(1, EmptyNode, TreeNode(2, TreeNode(3), EmptyNode))) == Seq(1, 3, 2)
+    inorderTraversal(TreeNode(1, EmptyTree, TreeNode(2, TreeNode(3), EmptyTree))) == Seq(1, 3, 2)
   )
   assert(inorderTraversal(TreeNode(1, TreeNode(2))) == Seq(2, 1))
-  assert(inorderTraversal(TreeNode(1, EmptyNode, TreeNode(2))) == Seq(1, 2))
+  assert(inorderTraversal(TreeNode(1, EmptyTree, TreeNode(2))) == Seq(1, 2))
 }
