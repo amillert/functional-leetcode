@@ -10,9 +10,12 @@ The original *Leetcode* datastructures have been turned into custom case class-b
 - [94. Binary Tree Inorder Traversal (Day 1)](https://leetcode.com/problems/binary-tree-inorder-traversal/),
 - [100. Same Tree (Day 1)](https://leetcode.com/problems/same-tree/),
 - [101. Symmetric Tree (Day 2)](https://leetcode.com/problems/symmetric-tree/),
+- [104. Maximum Depth of Binary Tree (Day 3)](https://leetcode.com/problems/maximum-depth-of-binary-tree/),
 - [961. N-Repeated Element in Size 2N Array (Day 1)](https://leetcode.com/problems/n-repeated-element-in-size-2n-array/)
 
 > MEDIUM:
+- [98. Validate Binary Search Tree (Day 3)](https://leetcode.com/problems/validate-binary-search-tree/),
+- [114. Flatten Binary Tree to Linked List (Day 3)](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/),
 
 > HARD:
 - [23. Merge k Sorted Lists (Day 2)](https://leetcode.com/problems/merge-k-sorted-lists/),
