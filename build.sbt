@@ -28,4 +28,4 @@ lazy val day4 =
 lazy val leetcode =
   project
     .in(file("."))
-    .dependsOn(commonADT, day1, day2, day3, day4)
+    .dependsOn(day1, day2, day3, day4)
