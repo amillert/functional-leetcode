@@ -21,7 +21,11 @@ lazy val day3 =
     .in(file("./src/main/scala/pl/amillert/leetcode/day3"))
     .dependsOn(commonADT)
 
+lazy val day4 =
+  project
+    .in(file("./src/main/scala/pl/amillert/leetcode/day4"))
+
 lazy val leetcode =
   project
     .in(file("."))
-    .dependsOn(commonADT, day1, day2, day3)
+    .dependsOn(commonADT, day1, day2, day3, day4)
